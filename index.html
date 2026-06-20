@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr Vivian Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0a192f;
+            --primary-light: #112240;
+            --accent: #64ffda;
+            --lighter-text: #a8b2d1;
+            --white: #e6f1ff;
+            --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--lighter-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .mono {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: clamp(10px, 2vw, 20px);
+            line-height: 1.1;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 60px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: clamp(16px, 1.8vw, 18px);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--white);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            font-size: clamp(14px, 1.6vw, 16px);
+            font-family: 'Roboto Mono', monospace;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: clamp(18px, 2.2vw, 24px);
+            color: var(--accent);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: clamp(15px, 2.5vw, 40px);
+        }
+
+        .nav-links a {
+            color: var(--white);
+            font-size: clamp(14px, 1.6vw, 16px);
+            font-family: 'Roboto Mono', monospace;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            color: var(--accent);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            color: var(--accent);
+            font-size: clamp(16px, 2vw, 20px);
+            margin-bottom: 15px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .hero-title {
+            font-size: clamp(25px, 5vw, 50px);
+            margin: 0 0 15px;
+            line-height: 1.2;
+        }
+
+        .hero-highlight {
+            color: var(--accent);
+        }
+
+        .hero-description {
+            max-width: 600px;
+            font-size: clamp(16px, 2vw, 20px);
+            margin-bottom: 25px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            background: var(--primary-light);
+            z-index: 1;
+        }
+
+        /* About Section */
+        #about {
+            background: #1A2A44;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: 3fr 2fr;
+            }
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-width: 100%;
+            order: 1;
+        }
+
+        @media (min-width: 768px) {
+            .about-image {
+                order: 2;
+            }
+        }
+
+        .about-image:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            font-family: 'Roboto Mono', monospace;
+            font-size: clamp(14px, 1.6vw, 16px);
+        }
+
+        .skill-item i {
+            color: var(--accent);
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: var(--primary-light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        @media (min-width: 600px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+        }
+
+        .project-card {
+            background: #1A2A44;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.5);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image:after {
+            opacity: 1;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: clamp(20px, 2.2vw, 24px);
+            margin-bottom: 12px;
+            color: var(--white);
+        }
+
+        .project-description {
+            margin-bottom: 15px;
+            min-height: auto;
+            font-size: clamp(15px, 1.8vw, 16px);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tech-tag {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: clamp(12px, 1.4vw, 14px);
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-links a {
+            font-size: clamp(13px, 1.5vw, 14px);
+        }
+
+        /* PUBLICATION SECTION */
+        #publication {
+            background-color: #1A2A44;
+            padding: 60px 0;
+        }
+
+        .publication-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+            font-size: clamp(15px, 1.8vw, 16px);
+        }
+
+        .publication-item i {
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            top: 6px;
+        }
+
+        .publication-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* EDUCATION */
+        .edu-entry {
+            background: #1A2A44;
+            padding: 20px;
+            margin: 15px auto;
+            border-radius: 10px;
+            max-width: 700px;
+            min-height: auto;
+            transition: transform 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding-left: 80px;
+        }
+
+        .edu-entry .year {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .details p {
+            margin-top: 4px;
+            margin-bottom: 0;
+            line-height: 1.4;
+            font-size: clamp(15px, 1.8vw, 16px);
+        }
+
+        .details p:first-of-type {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .year {
+            font-weight: 800;
+            background: var(--primary-light);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: clamp(14px, 1.6vw, 16px);
+            color: white;
+        }
+
+        .year-start {
+         font-size: 12px;
+         color: var(--accent);
+         font-weight: 500;
+          text-align: center;
+        }
+
+        #education {
+            background: var(--primary-light);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #1A2A44;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        @media (min-width: 992px) {
+            .contact-grid {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        @media (min-width: 992px) {
+            .contact-info {
+                width: 40%;
+            }
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            min-width: 50px;
+            height: 50px;
+            background: #1A2A44;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 20px;
+        }
+
+        .contact-text h3 {
+            margin-bottom: 5px;
+            font-size: clamp(18px, 2vw, 20px);
+        }
+
+        .contact-form {
+            width: 100%;
+        }
+
+        @media (min-width: 992px) {
+            .contact-form {
+                width: 55%;
+            }
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(17, 34, 64, 0.7);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 4px;
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(15px, 1.8vw, 16px);
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-light);
+            text-align: center;
+            padding: 25px 0;
+            border-top: 1px solid rgba(168, 178, 209, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            transition: var(--transition);
+            font-size: 18px;
+        }
+
+        .social-link:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            font-size: clamp(13px, 1.5vw, 14px);
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 70%;
+                height: calc(100vh - 70px);
+                background: rgba(10, 25, 47, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 30px;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+                z-index: 1001;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            #hero {
+                padding-top: 70px;
+            }
+
+            h2:after {
+                width: 40%;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-description {
+                margin: 0 auto 25px;
+            }
+        }
+
+        /* Tablet styles */
+        @media (max-width: 992px) and (min-width: 769px) {
+            .nav-links li {
+                margin-left: 20px;
+            }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-top.active {
+            opacity: 0.8;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span>▷</span>DR. VIVIAN
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#publication">Publication</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu" id="mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h3 class="hero-subtitle fade-in">Hi, I'm</h3>
+                <h1 class="hero-title fade-in delay-1">Dr Vivian Akoto Adjepong</h1>
+                <h2 class="hero-title fade-in delay-2">I build <span class="hero-highlight">intelligent systems</span>.</h2>
+                <p class="hero-description fade-in delay-3">
+                  I specialize in deep learning, computer vision, and lightweight 
+                  neural networks for real-world applications — spanning plant 
+                  disease detection, medical imaging, and AI for agriculture and 
+                  food security. My work is published in high-impact journals 
+                   including PLOS ONE and Scopus-indexed venues.
+                </p>
+                <a href="#projects" class="btn fade-in delay-4">View My Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="container">
+            <h2 class="fade-in">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text fade-in">
+                    <p>
+                        I am a Computer Scientist and AI researcher, currently serving as Senior Lecturer in the Department 
+                        of Computer Science and Informatics at the University 
+                        of Energy and Natural Resources, Ghana.
+                    </p>
+                    <p>
+                        My research focuses on deep learning, computer vision and lightweight neural network architectures — applied 
+                        to real-world problems in health, agriculture, climate, 
+                        and environmental sustainability across Africa. I have 
+                       co-authored research publications spanning AI, dataset 
+                       development and medical imaging, and serve as a reviewer 
+                        for PLOS ONE, Scientific Reports, BMC Medical Imaging and Memetic Computing.
+                    </p>
+                    <p>
+                       I am a Schmidt AI in Science Faculty Fellow (first cohort 
+                       2025–2028) at the University of Oxford and a two-time 
+                       recipient of the International Development Research Centre 
+                       (IDRC) grant. I am passionate about mentoring the next 
+                        generation of computer scientists and empowering young 
+                        girls through ICT programs across Ghana.
+                    </p>
+                </div>
+                <div class="about-image fade-in">
+                    <img src="https://raw.githubusercontent.com/HarunaDauda/chari.img1/main/chari_img1.jpeg" alt="Dr Vivian Akoto Adjepong">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT SECTION -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="fade-in">Research & Projects</h2>
+            <div class="projects-grid"> 
+                <!-- Project 1 -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <a href="https://doi.org/10.1016/j.dib.2023.109306" target="_blank">
+                          <img src="https://raw.githubusercontent.com/HarunaDauda/crop.collage/main/crop_collage.jpg" alt="Crop disease & pest detection">
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Crop disease & pest Detection</h3>
+                        <p class="project-description">
+                           AI-driven web and mobile app for detecting crop pests and diseases
+                           to support food security in resource-constrained environments.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Keras</span>
+                            <span class="tech-tag">Flutter</span>
+                             <span class="tech-tag">TF Lite</span>
+                              <span class="tech-tag">CapsNet</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://doi.org/10.1016/j.dib.2023.109306" class="mono"><i class="fas fa-external-link-alt"></i> Visit Paper</a>
+                          
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <a href="https://doi.org/10.1016/j.sciaf.2024.e02432" target="_blank">
+                            <img src="https://raw.githubusercontent.com/HarunaDauda/chest.img/main/chest_img.jpg" alt="COVID-19 Detection Mobile App">
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">COVID-19 Detection Mobile App</h3>
+                        <p class="project-description">
+                           Mobile app using CNN and EfficientNet-b0 to identify 
+                           COVID-19 in chest X-ray images,
+                           deployed for real-world clinical use.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">EfficientNet</span>
+                            <span class="tech-tag">CNN</span>
+                            <span class="tech-tag">TF Lite</span>
+                            <span class="tech-tag">DART</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://doi.org/10.1016/j.sciaf.2024.e02432" class="mono"><i class="fas fa-external-link-alt"></i> Visit Paper</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <a href="https://doi.org/10.1371/journal.pone.0300133" target="_blank">
+                            <img src="https://raw.githubusercontent.com/HarunaDauda/brain.img/main/brain_img.jpg" alt="Medical Image Diagnosis (CapsNet)">
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Medical Image Diagnosis(CapsNet)</h3>
+                        <p class="project-description">
+                           Novel CapsNet architectures(TTDCapsNet,TTSFM)
+                           for brain tumor detection and complex medical 
+                           image recognition.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">CapsNet</span>
+                            <span class="tech-tag">Jupyter</span>
+                               <span class="tech-tag">Keras</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://doi.org/10.1371/journal.pone.0300133" class="mono"><i class="fas fa-external-link-alt"></i> Visit Paper</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <a href="https://doi.org/10.1109/ACIT53391.2021.9677084" target="_blank">
+                            <img src="https://raw.githubusercontent.com/HarunaDauda/flood.img/main/flood_img.jpg" alt="Flood prediction with Deep Learning">
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Flood prediction with Deep Learning</h3>
+                        <p class="project-description">
+                           Ensemble and deep learning techniques applied to 
+                           enhance flood prediction accuracy, published at IEEE ACIT 2021.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">DeepLearning</span>
+                            <span class="tech-tag">Ensemble ML</span>
+                             <span class="tech-tag">Jupyter</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://doi.org/10.1109/ACIT53391.2021.9677084" class="mono"><i class="fas fa-external-link-alt"></i> Visit Paper</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publication -->
+    <section id="publication">
+        <div class="container">
+            <h2 class="fade-in">Publication</h2>
+            <div class="publication-grid">
+                <div class="publication-item fade-in">
+                    <i class="fa fa-caret-right"></i>
+                     Dual-Lane CDH Atrous CapsNet for the Detection of Plant Diseases.
+                     (S. Okyere-Gyamfi, M. Asante, Y.M. Missah, K.O. Peasah & V. 
+                     Akoto-Adjepong) Volume 16(7), 659–673. 2025.
+                </div>
+                <div class="publication-item fade-in">
+                    <i class="fa fa-caret-right"></i>
+                     CLAHE and Colour Difference Histogram Feature Merging Capsule Network
+                     for Complex Image Recognition. (S. Okyere-Gyamfi, 
+                     M. Asante & K.O. Peasah) PLOS ONE. 2025.
+                </div>
+                <div class="publication-item fade-in">
+                    <i class="fas fa-caret-right"></i>
+                     Tri Texton-Dense Capsule Network for Complex and Medical Image Recognition.
+                    (V. Akoto-Adjepong, O. Appiah, P.K. Mensah & P. Appiahene) PLOS ONE. 2024.
+                </div> 
+                <div class="publication-item fade-in">
+                    <i class="fas fa-caret-right"></i>
+                     Deployment of Mobile Application using a Novel CNN Model 
+                     for the Detection of COVID-19 Thoracic Disease. (S. Okyere-Gyamfi,
+                     V. Akoto-Adjepong et al.) Scientific African. 2024.
+
+                </div>
+                <div class="publication-item fade-in">
+                    <i class="fas fa-caret-right"></i>
+                     The use of EfficientNet-b0 Network to Identify COVID-19 in Chest X-ray Images. 
+                     (M.A. Junior, P. Appiahene, Y.M. Missah & V. Akoto-Adjepong)
+                      Journal of Electrical Systems and Information Technology. 2024.
+                </div>  
+                <div class="publication-item fade-in">
+                    <i class="fas fa-caret-right"></i>
+                    Texton Tri-alley Separable Feature Merging Capsule Network for Brain Tumor Detection.
+                    (V. Akoto-Adjepong, O. Appiah, P. Appiahene & P.K. Mensah) IJACSA Vol.14(9). 2023.
+                </div> 
+                 <div class="publication-item fade-in">
+                    <i class="fas fa-caret-right"></i>
+                    CCMT: Dataset for Crop Pest and Disease Detection. (P.K. Mensah,
+                     V. Akoto-Adjepong et al.) Data in Brief. 2023.
+                </div>  
+                <div class="publication-item fade-in">
+                    <i class="fas fa-caret-right"></i>
+                  Enhancing Flood Prediction using Ensemble and Deep Learning Techniques. 
+                  (I.K. Nti & V. Akoto-Adjepong) IEEE ACIT. 2021.
+                </div>
+            </div>
+        </div>
+    </section>
+ <!-- Education & Experience -->
+<section id="education">
+    <div class="container">
+        <h2 class="fade-in">Experience & Education</h2>
+
+        <!-- Experience -->
+        <h3 class="fade-in" style="text-align:center; margin: 30px 0 10px; color: var(--accent);">Experience</h3>
+        <div class="education-grid">
+            <div class="edu-entry fade-in">
+                <div class="year-wrap">
+                    <span class="year-start">2024</span>
+                    <div class="year">Present</div>
+                </div>
+                <div class="details">
+                    <h1>Senior Lecturer</h1>
+                    <p>[Department of Computer Science and Informatics, University of Energy and Natural Resources, Ghana.]</p>
+                    <p>Teaching, research supervision, and interdisciplinary AI applications in agriculture, healthcare, and environmental sustainability.</p>
+                </div>
+            </div>
+
+            <div class="edu-entry fade-in">
+                <div class="year-wrap">
+                    <span class="year-start">2020</span>
+                    <div class="year">2024</div>
+                </div>
+                <div class="details">
+                    <h1>Lecturer</h1>
+                    <p>[Department of Computer Science and Informatics, University of Energy and Natural Resources, Ghana.]</p>
+                    <p>Conducted teaching and research in Computer Science and Artificial Intelligence.</p>
+                </div>
+            </div>
+
+            <div class="edu-entry fade-in">
+                <div class="year-wrap">
+                    <span class="year-start">2018</span>
+                    <div class="year">2020</div>
+                </div>
+                <div class="details">
+                    <h1>Assistant Lecturer</h1>
+                    <p>[Department of Computer Science and Informatics, University of Energy and Natural Resources, Ghana.]</p>
+                    <p>Supported teaching, student supervision, and departmental research activities.</p>
+                </div>
+            </div>
+
+            <div class="edu-entry fade-in">
+                <div class="year-wrap">
+                    <span class="year-start">2011</span>
+                    <div class="year">2018</div>
+                </div>
+                <div class="details">
+                    <h1>ICT Teacher</h1>
+                    <p>[Adako Jachie M/A JHS, Ghana.]</p>
+                    <p>Taught Information and Communication Technology, set examination questions and supervised students.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <h3 class="fade-in" style="text-align:center; margin: 30px 0 10px; color: var(--accent);">Education</h3>
+        <div class="education-grid">
+            <div class="edu-entry fade-in">
+                <div class="year-wrap">
+                    <span class="year-start">2020</span>
+                    <div class="year">2024</div>
+                </div>
+                <div class="details">
+                    <h1>PhD, Computer Science</h1>
+                    <p>[University of Energy and Natural Resources, Sunyani, Ghana.]</p>
+                </div>
+            </div>
+
+            <div class="edu-entry fade-in">
+                <div class="year-wrap">
+                    <span class="year-start">2012</span>
+                    <div class="year">2016</div>
+                </div>
+                <div class="details">
+                    <h1>MPhil, Computer Science</h1>
+                    <p>[Kwame Nkrumah University of Science and Technology, Kumasi, Ghana.]</p>
+                </div>
+            </div>
+
+            <div class="edu-entry fade-in">
+                <div class="year-wrap">
+                    <span class="year-start">2015</span>
+                    <div class="year">2016</div>
+                </div>
+                <div class="details">
+                    <h1>Diploma in Education</h1>
+                    <p>[University of Education, Winneba, Kumasi.]</p>
+                </div>
+            </div>
+
+            <div class="edu-entry fade-in">
+                <div class="year-wrap">
+                    <span class="year-start">2006</span>
+                    <div class="year">2010</div>
+                </div>
+                <div class="details">
+                    <h1>BSc, Computer Science</h1>
+                    <p>[Kwame Nkrumah University of Science and Technology, Kumasi, Ghana.]</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>         
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="fade-in">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p>vivian.akoto-adjepong@uenr.edu.gh</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Phone</h3>
+                            <p>+233247385738/+233263299902 </p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Location</h3>
+                            <p>Ghana, Bono Region</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Name" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Message" id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.: https://www.linkedin.com/in/ms-vivian-akoto-adjepong-604393217/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.researchgate.net/profile/Vivian-Akoto-Adjepong" target="_blank" class="social-link"><i class="fab fa-researchgate"></i></a>
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=57468151600" target="_blank" class="social-link"><i class="fas fa-user-graduate"></i></a>
+                <a href="https://orcid.org/0000-0003-4608-0758" target="_blank" class="social-link"><i class="fab fa-orcid"></i></a>
+                <a href="https://scholar.google.com/citations?user=c4OU0DMAAAAJ&hl=en&oi=ao" target="_blank" class="social-link"><i class="fas fa-graduation-cap"></i></a>
+                <a href="mailto:vivian.akoto-adjepong@uenr.edu.gh" class="social-link"><i class="fa fa-envelope"></i></a>
+                <a href="https://wa.me/+233247385738" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a> 
+            </div>
+            <p class="copyright">Designed & Built by CHARISMA &copy; <span id="currentYear">2026</span></p>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.querySelector('i').classList.toggle('fa-bars');
+            mobileMenu.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenu.querySelector('i').classList.add('fa-bars');
+                mobileMenu.querySelector('i').classList.remove('fa-times');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                // Simple validation
+                if (!name || !email || !subject || !message) {
+                    alert('Please fill in all fields.');
+                    return;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+                
+                // Show success message
+                alert('Thank you for your message! Dr. Vivian will get back to you soon.');
+                
+                // Reset form
+                contactForm.reset();
+            });
+        }
+        
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Initialize animations
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
