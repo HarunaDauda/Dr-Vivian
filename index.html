@@ -278,6 +278,28 @@
             display: block;
             transition: var(--transition);
         }
+        .research-interests ul {
+         list-style: none;
+          padding: 0;
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+         gap: 10px;
+        }
+
+        .research-interests ul li {
+         background: #1A2A44;
+         color: white;
+         padding: 8px 16px;
+         border-radius: 20px;
+         font-size: 13px;
+          border: 1px solid var(--accent);
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+           min-height: 45px;
+        }
+
 
         .skills-grid {
             display: grid;
@@ -431,63 +453,63 @@
         }
 
         /* EDUCATION */
-        .edu-entry {
-            background: #1A2A44;
-            padding: 20px;
-            margin: 15px auto;
-            border-radius: 10px;
-            max-width: 700px;
-            min-height: auto;
-            transition: transform 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            padding-left: 80px;
+        #education {
+         background: var(--primary-light);
         }
 
-        .edu-entry .year {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
+       .edu-entry {
+          background: #1A2A44;
+          padding: 20px 20px 20px 20px;
+           margin: 15px auto;
+           border-radius: 10px;
+           max-width: 700px;
+           min-height: auto;
+           transition: transform 0.4s ease;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           position: relative;
+        }
+
+        .edu-entry:hover {
+          transform: translateY(-4px);
+        }
+
+        .year-range {
+          font-size: clamp(13px, 1.5vw, 14px);
+          font-weight: 700;
+          color: var(--accent);
+           margin-bottom: 8px;
+           letter-spacing: 1px;
+        }
+
+        .details h1 {
+          font-size: clamp(16px, 2vw, 18px);
+          font-weight: 600;
+           color: white;
+           margin: 0 0 6px;
         }
 
         .details p {
-            margin-top: 4px;
-            margin-bottom: 0;
-            line-height: 1.4;
-            font-size: clamp(15px, 1.8vw, 16px);
+          margin-top: 4px;
+          margin-bottom: 0;
+          line-height: 1.4;
+          font-size: clamp(14px, 1.8vw, 15px);
+          color: #ccc;
         }
 
         .details p:first-of-type {
-            font-weight: 500;
-            margin-bottom: 2px;
+           font-weight: 500;
+          margin-bottom: 2px;
         }
 
-        .year {
-            font-weight: 800;
-            background: var(--primary-light);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-size: clamp(14px, 1.6vw, 16px);
-            color: white;
-        }
-
-        .year-start {
-         font-size: 12px;
-         color: var(--accent);
-         font-weight: 500;
-          text-align: center;
-        }
-
-        #education {
-            background: var(--primary-light);
+        #education h3 {
+          font-size: clamp(18px, 2.5vw, 22px);
+          font-weight: 600;
+          margin: 40px 0 15px;
+           text-align: center;
+          color: var(--accent);
+          letter-spacing: 1px;
         }
 
         /* Contact Section */
@@ -548,6 +570,138 @@
             width: 100%;
         }
 
+        /* GRANTS & FELLOWSHIP TIMELINE */
+#grants {
+    background: var(--primary-light);
+    padding: 60px 0;
+}
+
+#grants h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Vertical green line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--accent);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    width: 45%;
+    margin-bottom: 40px;
+}
+
+/* Right cards */
+.timeline-item.right {
+    left: 55%;
+}
+
+/* Left cards */
+.timeline-item.left {
+    left: 0;
+}
+
+/* Green dot on the line */
+.timeline-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: var(--accent);
+    border-radius: 50%;
+    top: 20px;
+    border: 3px solid white;
+}
+
+.timeline-item.right .timeline-dot {
+    left: -10%;
+}
+
+.timeline-item.left .timeline-dot {
+    right: -10%;
+}
+
+/* White card box */
+.timeline-card {
+    background: #1A2A44;
+    border-radius: 10px;
+    padding: 20px 25px;
+    border-left: 3px solid var(--accent);
+    transition: transform 0.3s ease;
+}
+
+.timeline-card:hover {
+    transform: translateY(-4px);
+}
+
+.timeline-year {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.timeline-card h3 {
+    font-size: clamp(15px, 1.8vw, 17px);
+    font-weight: 600;
+    color: white;
+    margin: 0 0 6px;
+}
+
+.timeline-tag {
+    font-size: 12px;
+    /* color: white; */
+    font-weight: 500;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+/* .timeline-tag {
+    color: white;
+} */
+.timeline-card .timeline-tag {
+    color: white !important;
+}
+
+.timeline-card p {
+    font-size: clamp(13px, 1.5vw, 14px);
+    color: #ccc;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 80%;
+        left: 50px !important;
+    }
+
+    .timeline-item .timeline-dot {
+        left: -40px !important;
+        right: auto !important;
+    }
+}
+
         @media (min-width: 992px) {
             .contact-form {
                 width: 55%;
@@ -600,7 +754,7 @@
 
         .social-link {
             width: 45px;
-            height: 45px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -769,7 +923,9 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#publication">Publication</a></li>
                     <li><a href="#education">Education</a></li>
+                    <li><a href="#grants">Grants & Fellowship</a></li>
                     <li><a href="#contact">Contact</a></li>
+                  
                 </ul>
                 <div class="mobile-menu" id="mobileMenu">
                     <i class="fas fa-bars"></i>
@@ -787,7 +943,8 @@
                 <h1 class="hero-title fade-in delay-1">Dr Vivian Akoto Adjepong</h1>
                 <h2 class="hero-title fade-in delay-2">I build <span class="hero-highlight">intelligent systems</span>.</h2>
                 <p class="hero-description fade-in delay-3">
-                  I specialize in deep learning, computer vision, and lightweight 
+                  I specialize in deep learning, computer vision, and lightweight deep learning, 
+                  machine learning, and
                   neural networks for real-world applications — spanning plant 
                   disease detection, medical imaging, and AI for agriculture and 
                   food security. My work is published in high-impact journals 
@@ -815,7 +972,7 @@
                         and environmental sustainability across Africa. I have 
                        co-authored research publications spanning AI, dataset 
                        development and medical imaging, and serve as a reviewer 
-                        for PLOS ONE, Scientific Reports, BMC Medical Imaging and Memetic Computing.
+                        for PLOS ONE, Scientific Reports, BMC Medical Imaging, Memetic Computing, etc.
                     </p>
                     <p>
                        I am a Schmidt AI in Science Faculty Fellow (first cohort 
@@ -823,13 +980,25 @@
                        recipient of the International Development Research Centre 
                        (IDRC) grant. I am passionate about mentoring the next 
                         generation of computer scientists and empowering young 
-                        girls through ICT programs across Ghana.
+                        girls through ICT programs across Africa.
                     </p>
                 </div>
                 <div class="about-image fade-in">
                     <img src="https://raw.githubusercontent.com/HarunaDauda/chari.img1/main/chari_img1.jpeg" alt="Dr Vivian Akoto Adjepong">
                 </div>
             </div>
+            <!-- Research Interests -->
+            <div class="research-interests fade-in">
+            <h3 style="color: var(--accent); margin-bottom: 15px;">Research Interests</h3>
+            <ul>
+               <li>Deep Learning & Computer Vision</li>
+                <li>Machine Learning</li>
+               <li>Efficient AI / Edge AI</li>
+                <li>Capsule Networks (CapsNet)</li>
+               <li>Plant Disease & Pest Detection</li>
+                <li>Medical Image Analysis</li>
+                <li>AI for Agriculture, Climate & Environmental Sustainability</li>
+            </ul>
         </div>
     </section>
 
@@ -951,58 +1120,70 @@
 
     <!-- Publication -->
     <section id="publication">
-        <div class="container">
-            <h2 class="fade-in">Publication</h2>
-            <div class="publication-grid">
-                <div class="publication-item fade-in">
-                    <i class="fa fa-caret-right"></i>
-                     Dual-Lane CDH Atrous CapsNet for the Detection of Plant Diseases.
-                     (S. Okyere-Gyamfi, M. Asante, Y.M. Missah, K.O. Peasah & V. 
-                     Akoto-Adjepong) Volume 16(7), 659–673. 2025.
-                </div>
-                <div class="publication-item fade-in">
-                    <i class="fa fa-caret-right"></i>
-                     CLAHE and Colour Difference Histogram Feature Merging Capsule Network
-                     for Complex Image Recognition. (S. Okyere-Gyamfi, 
-                     M. Asante & K.O. Peasah) PLOS ONE. 2025.
-                </div>
-                <div class="publication-item fade-in">
-                    <i class="fas fa-caret-right"></i>
-                     Tri Texton-Dense Capsule Network for Complex and Medical Image Recognition.
-                    (V. Akoto-Adjepong, O. Appiah, P.K. Mensah & P. Appiahene) PLOS ONE. 2024.
-                </div> 
-                <div class="publication-item fade-in">
-                    <i class="fas fa-caret-right"></i>
-                     Deployment of Mobile Application using a Novel CNN Model 
-                     for the Detection of COVID-19 Thoracic Disease. (S. Okyere-Gyamfi,
-                     V. Akoto-Adjepong et al.) Scientific African. 2024.
+    <div class="container">
+        <h2 class="fade-in">Publication</h2>
+        <div class="publication-grid">
 
-                </div>
-                <div class="publication-item fade-in">
-                    <i class="fas fa-caret-right"></i>
-                     The use of EfficientNet-b0 Network to Identify COVID-19 in Chest X-ray Images. 
-                     (M.A. Junior, P. Appiahene, Y.M. Missah & V. Akoto-Adjepong)
-                      Journal of Electrical Systems and Information Technology. 2024.
-                </div>  
-                <div class="publication-item fade-in">
-                    <i class="fas fa-caret-right"></i>
-                    Texton Tri-alley Separable Feature Merging Capsule Network for Brain Tumor Detection.
-                    (V. Akoto-Adjepong, O. Appiah, P. Appiahene & P.K. Mensah) IJACSA Vol.14(9). 2023.
-                </div> 
-                 <div class="publication-item fade-in">
-                    <i class="fas fa-caret-right"></i>
-                    CCMT: Dataset for Crop Pest and Disease Detection. (P.K. Mensah,
-                     V. Akoto-Adjepong et al.) Data in Brief. 2023.
-                </div>  
-                <div class="publication-item fade-in">
-                    <i class="fas fa-caret-right"></i>
-                  Enhancing Flood Prediction using Ensemble and Deep Learning Techniques. 
-                  (I.K. Nti & V. Akoto-Adjepong) IEEE ACIT. 2021.
-                </div>
+            <div class="publication-item fade-in">
+                <i class="fas fa-caret-right"></i>
+                Okyere-gyamfi, S., Asante, M., Missah, Y. M., Peasah, K. O., & Akoto-adjepong, 
+                V. (2025). DLCACapsNet: Dual-Lane CDH Atrous CapsNet for the Detection of Plant Diseases. 16(7), 659–673.
             </div>
+
+            <div class="publication-item fade-in">
+                <i class="fas fa-caret-right"></i>
+                Okyere-gyamfi, S., Asante, M., & Peasah, K. O. (2025). Contrast limited adaptive histogram equalization (CLAHE)
+                 and colour difference histogram (CDH) feature merging capsule network (CCFMCapsNet) for complex image recognition. 1–27. 
+                <a href="https://doi.org/10.1371/journal.pone.0335393" target="_blank" style="color: var(--accent);">doi.org/10.1371/journal.pone.0335393</a>
+            </div>
+
+            <div class="publication-item fade-in">
+                <i class="fas fa-caret-right"></i>
+                Okyere-Gyamfi, S., Akoto-Adjepong, V., Adu, K., Ayidzoe, M. A., Appiah, O., Appiahene, P., Mensah, 
+                P. K., Opoku, M., Bawah, F. U., Awarayi, N. S., Boateng, S., Nimbe, P., & Adekoya, A. F. (2024). Deployment of mobile application using a novel CNN model for 
+                the detection of COVID-19 thoracic disease. Scientific African, 26, e02432. 
+                <a href="https://doi.org/10.1016/j.sciaf.2024.e02432" target="_blank" style="color: var(--accent);">doi.org/10.1016/j.sciaf.2024.e02432</a>
+            </div>
+
+            <div class="publication-item fade-in">
+                <i class="fas fa-caret-right"></i>
+                Akoto-Adjepong, V., Appiah, O., Mensah, P. K., & Appiahene, P. (2024). 
+                TTDCapsNet: Tri Texton-Dense Capsule Network for complex and medical image recognition. PLoS ONE, Vol. 19, Issue 3 March. 
+                <a href="https://doi.org/10.1371/journal.pone.0300133" target="_blank" style="color: var(--accent);">doi.org/10.1371/journal.pone.0300133</a>
+            </div>
+
+            <div class="publication-item fade-in">
+                <i class="fas fa-caret-right"></i>
+                Akoto-Adjepong, V., Appiah, O., Appiahene, P., & Mensah, P. K. (2023). 
+                Texton Tri-alley Separable Feature Merging (TTSFM) Capsule Network for Brain Tumor Detection. International Journal of Advanced Computer Science and Applications, 14(9), 473–483. 
+                <a href="https://doi.org/10.14569/IJACSA.2023.0140951" target="_blank" style="color: var(--accent);">doi.org/10.14569/IJACSA.2023.0140951</a>
+            </div>
+
+            <div class="publication-item fade-in">
+                <i class="fas fa-caret-right"></i>
+                Mensah, P. K., Akoto-Adjepong, V., Adu, K., Ayidzoe, M. A., Bediako, E. A., Nyarko-Boateng, O., Boateng, S., Donkor, E. F., Bawah, 
+                F. U., Awarayi, N. S., Nimbe, P., Nti, I. K., Abdulai, M., Adjei, R. R., Opoku, M., Abdulai, S., & Amu-Mensah, F. (2023). CCMT: Dataset for crop pest and disease detection. Data in Brief, 49(June), 109306.
+                <a href="https://doi.org/10.1016/j.dib.2023.109306" target="_blank" style="color: var(--accent);">doi.org/10.1016/j.dib.2023.109306</a>
+            </div>
+
+            <div class="publication-item fade-in">
+                <i class="fas fa-caret-right"></i>
+                Junior, M. A., Appiahene, P., Missah, Y. M., & Akoto-Adjepong, V. (2024). 
+                The use of EfficientNet-b0 network to identify COVID-19 in chest X-ray images. Journal of Electrical Systems and Information Technology. 
+                <a href="https://doi.org/10.1186/s43067-024-00143-3" target="_blank" style="color: var(--accent);">doi.org/10.1186/s43067-024-00143-3</a>
+            </div>
+
+            <div class="publication-item fade-in">
+                <i class="fas fa-caret-right"></i>
+                Nti, I. K., & Akoto-Adjepong, V. (2021). Enhancing Flood Prediction using Ensemble and 
+                Deep Learning Techniques. 22nd International Arab Conference on Information Technology (ACIT), IEEE, December.
+                 <a href="https://doi.org/10.1109/ACIT53391.2021.9677084" target="_blank" style="color: var(--accent);">doi.org/10.1109/ACIT53391.2021.9677084</a>
+            </div>
+
         </div>
-    </section>
- <!-- Education & Experience -->
+    </div>
+</section>
+<!-- Education & Experience -->
 <section id="education">
     <div class="container">
         <h2 class="fade-in">Experience & Education</h2>
@@ -1011,10 +1192,7 @@
         <h3 class="fade-in" style="text-align:center; margin: 30px 0 10px; color: var(--accent);">Experience</h3>
         <div class="education-grid">
             <div class="edu-entry fade-in">
-                <div class="year-wrap">
-                    <span class="year-start">2024</span>
-                    <div class="year">Present</div>
-                </div>
+                <div class="year-range">2024 — Present</div>
                 <div class="details">
                     <h1>Senior Lecturer</h1>
                     <p>[Department of Computer Science and Informatics, University of Energy and Natural Resources, Ghana.]</p>
@@ -1023,10 +1201,7 @@
             </div>
 
             <div class="edu-entry fade-in">
-                <div class="year-wrap">
-                    <span class="year-start">2020</span>
-                    <div class="year">2024</div>
-                </div>
+                <div class="year-range">2020 — 2024</div>
                 <div class="details">
                     <h1>Lecturer</h1>
                     <p>[Department of Computer Science and Informatics, University of Energy and Natural Resources, Ghana.]</p>
@@ -1035,10 +1210,7 @@
             </div>
 
             <div class="edu-entry fade-in">
-                <div class="year-wrap">
-                    <span class="year-start">2018</span>
-                    <div class="year">2020</div>
-                </div>
+                <div class="year-range">2018 — 2020</div>
                 <div class="details">
                     <h1>Assistant Lecturer</h1>
                     <p>[Department of Computer Science and Informatics, University of Energy and Natural Resources, Ghana.]</p>
@@ -1047,10 +1219,7 @@
             </div>
 
             <div class="edu-entry fade-in">
-                <div class="year-wrap">
-                    <span class="year-start">2011</span>
-                    <div class="year">2018</div>
-                </div>
+                <div class="year-range">2011 — 2018</div>
                 <div class="details">
                     <h1>ICT Teacher</h1>
                     <p>[Adako Jachie M/A JHS, Ghana.]</p>
@@ -1063,10 +1232,7 @@
         <h3 class="fade-in" style="text-align:center; margin: 30px 0 10px; color: var(--accent);">Education</h3>
         <div class="education-grid">
             <div class="edu-entry fade-in">
-                <div class="year-wrap">
-                    <span class="year-start">2020</span>
-                    <div class="year">2024</div>
-                </div>
+                <div class="year-range">Nov 2020 — Aug 2024</div>
                 <div class="details">
                     <h1>PhD, Computer Science</h1>
                     <p>[University of Energy and Natural Resources, Sunyani, Ghana.]</p>
@@ -1074,10 +1240,7 @@
             </div>
 
             <div class="edu-entry fade-in">
-                <div class="year-wrap">
-                    <span class="year-start">2012</span>
-                    <div class="year">2016</div>
-                </div>
+                <div class="year-range">Sep 2012 — Nov 2016</div>
                 <div class="details">
                     <h1>MPhil, Computer Science</h1>
                     <p>[Kwame Nkrumah University of Science and Technology, Kumasi, Ghana.]</p>
@@ -1085,10 +1248,7 @@
             </div>
 
             <div class="edu-entry fade-in">
-                <div class="year-wrap">
-                    <span class="year-start">2015</span>
-                    <div class="year">2016</div>
-                </div>
+                <div class="year-range">Apr 2015 — Aug 2016</div>
                 <div class="details">
                     <h1>Diploma in Education</h1>
                     <p>[University of Education, Winneba, Kumasi.]</p>
@@ -1096,10 +1256,7 @@
             </div>
 
             <div class="edu-entry fade-in">
-                <div class="year-wrap">
-                    <span class="year-start">2006</span>
-                    <div class="year">2010</div>
-                </div>
+                <div class="year-range">Aug 2006 — Jun 2010</div>
                 <div class="details">
                     <h1>BSc, Computer Science</h1>
                     <p>[Kwame Nkrumah University of Science and Technology, Kumasi, Ghana.]</p>
@@ -1108,7 +1265,51 @@
         </div>
 
     </div>
-</section>         
+</section>        
+
+
+<!-- Grants & Fellowship -->
+<section id="grants">
+    <div class="container">
+        <h2 class="fade-in">Grants & Fellowship</h2>
+        <div class="timeline">
+
+            <!-- Card 1 - Right -->
+            <div class="timeline-item right fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-year">2025 — 2028</span>
+                    <h3>Schmidt AI in Science Faculty Fellow</h3>
+                    <p class="timeline-tag">Fellowship & Award</p>
+                    <p>University of Oxford — First Cohort. Recognized as a leading AI researcher advancing science through artificial intelligence.</p>
+                </div>
+            </div>
+
+            <!-- Card 2 - Left -->
+            <div class="timeline-item left fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-year">2025 — 2026</span>
+                    <h3>Scale Up IDRC Grant with ATPS</h3>
+                    <p class="timeline-tag">Grant</p>
+                    <p>Development of AI-Driven Application for crop pests and disease detection on Web and Mobile Platforms. Responsible for data collection and publications.</p>
+                </div>
+            </div>
+
+            <!-- Card 3 - Right -->
+            <div class="timeline-item right fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-year">2022 — 2024</span>
+                    <h3>IDRC Grant with ATPS</h3>
+                    <p class="timeline-tag">Grant</p>
+                    <p>Development of Deep Learning-based Mobile and Web applications for detecting crop pests and diseases. Responsible for data collection and publications.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
     
     <!-- Contact Section -->
     <section id="contact">
